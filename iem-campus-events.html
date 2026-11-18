@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Institute of Engineering and Management – Campus Events</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6ff;--surface:#fff;--ink:#0b1530;--muted:#56608a;--line:#d9def3;--blue:#2f4bff;--gold:#ffb81c;--navy:#0b1530;--on-navy:#f4f6ff;
+--head:'Bricolage Grotesque','Trebuchet MS',sans-serif;--body:'Figtree',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1126;--surface:#121c3d;--ink:#eef1ff;--muted:#9aa5d6;--line:#25315f;--blue:#6d84ff;--navy:#060b1a}}
+:root[data-theme="dark"]{--bg:#0a1126;--surface:#121c3d;--ink:#eef1ff;--muted:#9aa5d6;--line:#25315f;--blue:#6d84ff;--navy:#060b1a}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body)}
+h1,h2,h3{font-family:var(--head);line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+button{font:inherit;cursor:pointer}
+.btn{border:2px solid var(--ink);background:var(--gold);color:#0b1530;font-weight:600;padding:.7rem 1.2rem;border-radius:999px;text-decoration:none;display:inline-block;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+header.top{position:sticky;top:0;z-index:20;background:var(--navy);color:var(--on-navy)}
+header.top .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+.mono{width:44px;height:44px;border-radius:12px;background:var(--gold);color:#0b1530;display:grid;place-items:center;font:800 17px var(--head);letter-spacing:-.5px;transform:rotate(-6deg)}
+.brand b{display:block;font:700 15px/1.15 var(--head)}
+.brand small{opacity:.7;font-size:12px}
+nav{display:flex;gap:18px;font-size:14px;flex-wrap:wrap}
+nav a{text-decoration:none;opacity:.85}nav a:hover{opacity:1;text-decoration:underline}
+.pill{background:transparent;color:inherit;border:1.5px solid rgba(255,255,255,.5);border-radius:999px;padding:.4rem .9rem;font-size:14px}
+.pill b{background:var(--gold);color:#0b1530;border-radius:999px;padding:0 .5rem;margin-left:.3rem}
+/* hero */
+.hero{background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden;padding:56px 0 0}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(47,75,255,.55),transparent 45%),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 64px)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding-bottom:56px}
+.kicker{display:inline-block;border:1.5px dashed var(--gold);color:var(--gold);padding:.25rem .8rem;border-radius:6px;font-size:13px;margin-bottom:18px}
+.hero h1{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800;letter-spacing:-.03em}
+.hero h1 span{display:block;color:transparent;-webkit-text-stroke:2px var(--gold)}
+.hero p.lead{max-width:46ch;opacity:.85;font-size:1.1rem;margin:20px 0 26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .btn.ghost{border-color:rgba(255,255,255,.6)}
+/* ticket */
+.ticket{background:var(--gold);color:#0b1530;border-radius:18px;padding:26px 26px 22px;position:relative;transform:rotate(2.5deg);box-shadow:10px 12px 0 rgba(0,0,0,.35);
+-webkit-mask:radial-gradient(circle 14px at 0 62%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 62%,#0000 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 14px at 0 62%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 62%,#0000 98%,#000) right/51% 100% no-repeat}
+.ticket small{font-weight:600}
+.ticket h2{font-size:2.1rem;margin:6px 0 10px;font-weight:800}
+.ticket .perf{border-top:3px dotted #0b1530;margin:18px 0 14px}
+.ticket ul{list-style:none;margin:0 0 16px;padding:0;font-size:14.5px}
+.ticket .btn{background:#0b1530;color:var(--gold);border-color:#0b1530}
+/* marquee */
+.marquee{background:var(--gold);color:#0b1530;overflow:hidden;white-space:nowrap;border-block:2px solid var(--ink);position:relative}
+.marquee div{display:inline-block;padding:10px 0;font:800 1.25rem var(--head);animation:slide 28s linear infinite}
+.marquee span{margin:0 1.2rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee div{animation:none}html{scroll-behavior:auto}}
+/* sections */
+section{padding:64px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800}
+.sec-head p{color:var(--muted);margin:8px 0 0;max-width:50ch}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.tools input{flex:1 1 220px;padding:.7rem 1rem;border-radius:999px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+.chip{border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:.5rem 1rem;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:6px 26px 6px 26px;padding:20px;display:flex;flex-direction:column;gap:10px;text-align:left;color:inherit;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px) rotate(-.6deg);border-color:var(--blue)}
+.card .date{align-self:flex-start;background:var(--navy);color:var(--gold);border-radius:10px;padding:.3rem .7rem;font:700 14px var(--head)}
+.card h3{font-size:1.3rem;font-weight:700}
+.card p{margin:0;color:var(--muted);font-size:14.5px}
+.tag{font-size:13px;color:var(--blue);font-weight:600;margin-top:auto}
+.empty{grid-column:1/-1;text-align:center;padding:40px;border:2px dashed var(--line);border-radius:16px;color:var(--muted)}
+/* about + clubs */
+.about{background:var(--navy);color:var(--on-navy)}
+.about h2{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;max-width:18ch}
+.about .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px}
+.about .box{border:1.5px solid rgba(255,255,255,.25);border-radius:6px 22px 6px 22px;padding:22px}
+.about .box p{opacity:.8;margin:6px 0 0}
+.clubs{display:flex;flex-wrap:wrap;gap:12px}
+.club{background:var(--surface);border:2px solid var(--ink);border-radius:999px;padding:.7rem 1.3rem;font:700 1.05rem var(--head);box-shadow:4px 4px 0 var(--blue)}
+.club:nth-child(even){box-shadow:4px 4px 0 var(--gold);transform:rotate(1deg)}
+footer{background:var(--navy);color:var(--on-navy);padding:36px 0;font-size:14px;border-top:1px solid rgba(255,255,255,.15)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer b{font-family:var(--head);font-size:1.1rem}
+/* dialogs */
+dialog{border:2px solid var(--ink);border-radius:22px;background:var(--surface);color:var(--ink);padding:0;width:min(560px,94vw);max-height:90vh}
+dialog::backdrop{background:rgba(6,11,26,.7)}
+.dlg{padding:24px;display:grid;gap:12px}
+.dlg h3{font-size:1.7rem}
+.close{justify-self:end;background:none;border:none;font-size:1.6rem;color:inherit;line-height:1}
+label{display:grid;gap:4px;font-size:14px;font-weight:600}
+input,select,textarea{font:inherit;padding:.6rem .8rem;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px}
+.meta div{background:var(--bg);border-radius:10px;padding:8px 12px}
+.meta small{display:block;color:var(--muted)}
+.pass{background:var(--gold);color:#0b1530;border-radius:16px;padding:18px;border:2px solid #0b1530;position:relative}
+.pass h4{margin:0 0 2px;font:800 1.15rem var(--head)}
+.pass .id{font:800 1.9rem var(--head);letter-spacing:.04em;border-top:3px dotted #0b1530;margin-top:10px;padding-top:8px}
+.pass p{margin:2px 0;font-size:14px}
+.bars{height:30px;margin-top:8px;background:repeating-linear-gradient(90deg,#0b1530 0 2px,transparent 2px 5px,#0b1530 5px 8px,transparent 8px 10px)}
+.err{color:#d6336c;font-size:13px;min-height:1em}
+@media (max-width:800px){.hero .wrap,.about .cols{grid-template-columns:1fr}.ticket{transform:none}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="wrap">
+  <a class="brand" href="#top"><div class="mono">IEM</div><div><b>Institute of Engineering and Management</b><small>Campus Events Hub</small></div></a>
+  <nav><a href="#events">Events</a><a href="#about">Our campus</a><a href="#clubs">Student clubs</a></nav>
+  <button class="pill" id="openPasses">My passes<b id="passCount">0</b></button>
+  <button class="btn" id="openHost">Host an event</button>
+ </div>
+</header>
+
+<main id="top">
+<div class="hero">
+ <div class="wrap">
+  <div>
+   <span class="kicker">Annual tech and cultural season 2026</span>
+   <h1>Institute of Engineering <span>and Management</span></h1>
+   <p class="lead">Every hackathon, workshop, fest and seminar at IEM in one place. Register in a tap and get your digital entry pass instantly.</p>
+   <div class="cta"><a class="btn" href="#events">Browse events</a><button class="btn ghost" id="openHost2">Submit an event</button></div>
+  </div>
+  <article class="ticket" aria-label="Flagship event">
+   <small>IEM flagship · Free entry</small>
+   <h2>HackOverflow 4.0</h2>
+   <p style="margin:0">24-hour national innovation sprint. Build AI, FinTech and Web3 prototypes.</p>
+   <div class="perf"></div>
+   <ul><li>Nov 28–29, 2026 · 9:00 AM</li><li>Management House Auditorium, Salt Lake</li><li>₹1,50,000 prize pool</li></ul>
+   <button class="btn" data-open="e1">Register now</button>
+  </article>
+ </div>
+ <div class="marquee" aria-hidden="true"><div id="mq"></div></div>
+</div>
+
+<section id="events"><div class="wrap">
+ <div class="sec-head"><div><h2>Upcoming at IEM</h2><p>Search by name or filter by category. Tap any card for details and registration.</p></div></div>
+ <div class="tools">
+  <input id="q" type="search" placeholder="Search events, clubs or venues" aria-label="Search events">
+  <div id="chips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+ </div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<div class="about" id="about"><section><div class="wrap">
+ <h2>Institute of Engineering and Management, Kolkata</h2>
+ <div class="cols">
+  <div class="box"><h3>Salt Lake, Sector V</h3><p>Gurukul, Management House and Ashram campuses. Home of the technical and management societies.</p></div>
+  <div class="box"><h3>Student Affairs Helpdesk</h3><p>Questions about passes, MAR points or hosting an event: events@iem.example.edu</p></div>
+ </div>
+</div></section></div>
+
+<section id="clubs"><div class="wrap">
+ <div class="sec-head"><div><h2>Run by student communities</h2><p>The clubs and chapters that organise events across IEM.</p></div></div>
+ <div class="clubs"><span class="club">IEEE Student Branch</span><span class="club">GDG on Campus</span><span class="club">Robotics Club</span><span class="club">Ecstasia Cultural</span><span class="club">E-Cell</span><span class="club">Sports Council</span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div><b>Institute of Engineering and Management</b><br>Campus Events Hub · Kolkata, India</div>
+ <div>© 2026 IEM Campus Events. A student project.</div>
+</div></footer>
+
+<!-- event dialog -->
+<dialog id="dEvent"><div class="dlg">
+ <button class="close" data-close aria-label="Close">×</button>
+ <div id="evBody"></div>
+ <div id="regBox">
+  <h3 style="font-size:1.2rem;margin-bottom:8px">Register for this event</h3>
+  <div style="display:grid;gap:10px">
+   <label>Full name<input id="rName" autocomplete="name"></label>
+   <label>Roll or enrollment ID<input id="rRoll"></label>
+   <label>Department and year<select id="rDept"><option>CSE · 2nd year</option><option>CSE · 3rd year</option><option>IT · 2nd year</option><option>ECE · 3rd year</option><option>CSE (AI and ML)</option><option>BBA / MBA</option></select></label>
+   <label>College email<input id="rMail" type="email" autocomplete="email"></label>
+   <div class="err" id="rErr"></div>
+   <button class="btn" id="rGo" type="button">Confirm seat and get pass</button>
+  </div>
+ </div>
+ <div id="passBox" hidden></div>
+</div></dialog>
+
+<!-- host dialog -->
+<dialog id="dHost"><div class="dlg">
+ <button class="close" data-close aria-label="Close">×</button>
+ <h3>Host an event at IEM</h3>
+ <label>Event title<input id="hTitle"></label>
+ <label>Category<select id="hCat"><option>Tech</option><option>Workshop</option><option>Cultural</option><option>Sports</option><option>Seminar</option></select></label>
+ <label>Organising club<input id="hClub"></label>
+ <label>Date<input id="hDate" type="date"></label>
+ <label>Venue<input id="hVenue"></label>
+ <label>Description<textarea id="hDesc" rows="3"></textarea></label>
+ <div class="err" id="hErr"></div>
+ <button class="btn" id="hGo" type="button">Publish event</button>
+</div></dialog>
+
+<!-- passes dialog -->
+<dialog id="dPasses"><div class="dlg">
+ <button class="close" data-close aria-label="Close">×</button>
+ <h3>My digital passes</h3>
+ <div id="passList" style="display:grid;gap:12px"></div>
+</div></dialog>
+
+<script>
+const COLLEGE='Institute of Engineering and Management';
+let events=[
+{id:'e1',t:'HackOverflow 4.0',c:'Tech',d:'2026-11-28',club:'IEEE Student Branch and GDG',v:'Management House Auditorium',x:'A 24-hour sprint to build AI, FinTech and Web3 prototypes with ₹1,50,000 in prizes and internship interviews.'},
+{id:'e2',t:'Robo Wars Workshop',c:'Workshop',d:'2026-12-02',club:'Robotics Club',v:'Innovation Lab, Gurukul',x:'Build and tune a line-following bot in one day. Kits are provided; bring a laptop.'},
+{id:'e3',t:'Ecstasia Cultural Night',c:'Cultural',d:'2026-12-05',club:'Ecstasia Cultural',v:'Open Amphitheatre',x:'Music, dance, drama and a battle of bands to open the winter fest.'},
+{id:'e4',t:'Startup Pitch Day',c:'Seminar',d:'2026-12-09',club:'E-Cell',v:'Seminar Hall 2',x:'Student founders pitch to alumni investors. Listeners welcome.'},
+{id:'e5',t:'Inter-Department Football',c:'Sports',d:'2026-12-12',club:'Sports Council',v:'Sports Arena',x:'Knockout football between departments. Teams of 7 register through their class representative.'},
+{id:'e6',t:'Web3 and Cloud Basics',c:'Workshop',d:'2026-12-15',club:'GDG on Campus',v:'Computer Lab 3',x:'Deploy a small app to the cloud and learn how smart contracts work, step by step.'},
+{id:'e7',t:'Competitive Coding Sprint',c:'Tech',d:'2026-12-18',club:'IEEE Student Branch',v:'Computer Lab 1',x:'Three hours, eight problems. Solo participation, top ten win goodies.'}];
+let passes=[],cats=['All','Tech','Workshop','Cultural','Sports','Seminar'],cat='All',cur=null;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=d=>new Date(d+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+$('mq').innerHTML=Array(12).fill('<span>'+COLLEGE+'</span><span>✦</span>').join('');
+$('chips').innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c===cat}" data-cat="${c}">${c}</button>`).join('');
+function render(){
+ const q=$('q').value.toLowerCase();
+ const list=events.filter(e=>(cat==='All'||e.c===cat)&&(e.t+e.club+e.v).toLowerCase().includes(q)).sort((a,b)=>a.d.localeCompare(b.d));
+ $('grid').innerHTML=list.length?list.map(e=>`<button class="card" data-open="${e.id}"><span class="date">${fmt(e.d)}</span><h3>${esc(e.t)}</h3><p>${esc(e.club)} · ${esc(e.v)}</p><span class="tag">${esc(e.c)} · Tap to register</span></button>`).join(''):'<div class="empty">No events match your search. Clear the search box or pick another category.</div>';
+ document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.cat===cat));
+ $('passCount').textContent=passes.length;
+}
+document.addEventListener('click',e=>{
+ const ch=e.target.closest('[data-cat]');if(ch){cat=ch.dataset.cat;render();return}
+ const op=e.target.closest('[data-open]');if(op){openEvent(op.dataset.open);return}
+ if(e.target.closest('[data-close]'))e.target.closest('dialog').close();
+});
+$('q').addEventListener('input',render);
+function openEvent(id){
+ cur=events.find(x=>x.id===id);if(!cur)return;
+ $('evBody').innerHTML=`<div class="tag">${esc(cur.c)} · ${COLLEGE}</div><h3>${esc(cur.t)}</h3><p>${esc(cur.x)}</p><div class="meta"><div><small>Date</small>${fmt(cur.d)}</div><div><small>Venue</small>${esc(cur.v)}</div><div><small>Organised by</small>${esc(cur.club)}</div><div><small>Eligibility</small>MAR points and e-certificate</div></div>`;
+ $('regBox').hidden=false;$('passBox').hidden=true;$('rErr').textContent='';
+ $('dEvent').showModal();
+}
+$('rGo').onclick=()=>{
+ const n=$('rName').value.trim(),r=$('rRoll').value.trim(),m=$('rMail').value.trim();
+ if(!n||!r||!/^\S+@\S+\.\S+$/.test(m)){$('rErr').textContent='Enter your name, roll ID and a valid college email to continue.';return}
+ const p={id:'IEM-'+Math.floor(1000+Math.random()*9000),n,r,dept:$('rDept').value,ev:cur};
+ passes.push(p);$('regBox').hidden=true;$('passBox').hidden=false;$('passBox').innerHTML=passHTML(p);render();
+};
+function passHTML(p){return `<div class="pass"><h4>${COLLEGE}</h4><p><b>${esc(p.ev.t)}</b> · ${fmt(p.ev.d)}</p><p>${esc(p.n)} · ${esc(p.r)} · ${esc(p.dept)}</p><p>Show this pass at the ${esc(p.ev.v)} check-in desk.</p><div class="id">#${p.id}</div><div class="bars"></div></div>`}
+$('openPasses').onclick=()=>{$('passList').innerHTML=passes.length?passes.map(passHTML).join(''):'<p>No passes yet. Register for an event and your pass will appear here.</p>';$('dPasses').showModal()};
+const openHost=()=>{$('hErr').textContent='';$('dHost').showModal()};
+$('openHost').onclick=openHost;$('openHost2').onclick=openHost;
+$('hGo').onclick=()=>{
+ const t=$('hTitle').value.trim(),cl=$('hClub').value.trim(),d=$('hDate').value,v=$('hVenue').value.trim(),x=$('hDesc').value.trim();
+ if(!t||!cl||!d||!v||!x){$('hErr').textContent='Fill in every field to publish your event.';return}
+ events.push({id:'u'+Date.now(),t,c:$('hCat').value,d,club:cl,v,x});
+ ['hTitle','hClub','hDate','hVenue','hDesc'].forEach(i=>$(i).value='');
+ cat='All';$('q').value='';render();$('dHost').close();location.hash='events';
+};
+render();
+</script>
+</body>
+</html>
